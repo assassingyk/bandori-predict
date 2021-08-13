@@ -10,10 +10,8 @@ import PIL.ImageDraw as ImageDraw
 import shutil
 from traceback import format_exc
 
-from hoshino.config import RES_DIR
-
-imgbasePath=os.path.join(os.path.expanduser(RES_DIR), 'img','bangdreampic','predict')
-imgPath=os.path.join(os.path.expanduser(RES_DIR), 'img','bangdreampic','predict','resources')
+from hoshino.modules.bandori_predict.__init__ import imgbasePath
+imgPath=os.path.join(imgbasePath,'resources')
 
 def main(eventNumber,rankType,areacode,basePath,JsonPath):
     
