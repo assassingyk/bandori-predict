@@ -36,8 +36,9 @@ async def bang_predict(bot, ev):
     key = ev.message.extract_plain_text().strip()
     ranktype=-1
     if not key:
-        msg = "未指定档线，将发送全部档线预测……"
+        msg = "未指定档线，默认预测1k线……"
         await bot.send(ev, f"{msg}")
+        ranktype=4
     else:
         if key in ['50','五十线','50线']:
             ranktype=0
@@ -102,10 +103,4 @@ async def bang_predict(bot, ev):
             await bot.send(ev, R.img('bangdreampic/predict/e1k.png').cqcode)
         elif ranktype==5:
             await bot.send(ev, R.img('bangdreampic/predict/e2k.png').cqcode)
-    else:
-        await bot.send(ev, R.img('bangdreampic/predict/e50.png').cqcode)
-        await bot.send(ev, R.img('bangdreampic/predict/e100.png').cqcode)
-        await bot.send(ev, R.img('bangdreampic/predict/e300.png').cqcode)
-        await bot.send(ev, R.img('bangdreampic/predict/e500.png').cqcode)
-        await bot.send(ev, R.img('bangdreampic/predict/e1k.png').cqcode)
-        await bot.send(ev, R.img('bangdreampic/predict/e2k.png').cqcode)
+
