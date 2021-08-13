@@ -22,7 +22,7 @@ for areacode in range(0,5):
         os.mkdir(os.path.join(basePath, str(areacode)))
 
 sv_help = '''
-[邦邦档线100/1k/2k] 邦邦当期活动档线预测，数据来自besdori
+[<邦邦档线/预测线/ycx>100/1k/2k] 邦邦当期活动档线预测，数据来自besdori
 '''.strip()
 
 sv = Service('bangdream-predict', help_=sv_help)
@@ -31,7 +31,7 @@ areacode=3
 TogglePara = True
 Bnum=0 
 
-@sv.on_prefix('邦邦档线')
+@sv.on_prefix('邦邦档线', '预测线', 'ycx')
 async def bang_predict(bot, ev):
     key = ev.message.extract_plain_text().strip()
     ranktype=-1
