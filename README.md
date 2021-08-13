@@ -8,7 +8,7 @@
 
 因为用的人不多所以没太仔细改，功能比较粗糙，底图什么的也没换）
 
-感谢[Rinko-Predict-Python](https://github.com/Electronicute/Rinko-Predict-Python)帮助完善
+感谢[CYDXDianXian](https://github.com/CYDXDianXian)大佬帮助完善
 
 ## 安装方法
 
