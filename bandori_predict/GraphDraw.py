@@ -276,7 +276,7 @@ def main(eventNumber,rankType,areacode,basePath,JsonPath):
        
         
 def nopicHandle(imgbasePath):
-    for filename0 in ['e10.png','e50.png','e100.png','e300.png','e500.png','e1k.png','e2k.png']:
+    for filename0 in ['e50.png','e100.png','e300.png','e500.png','e1k.png','e2k.png']:
         filename=os.path.join(imgbasePath, filename0)
         shutil.copyfile(os.path.join(imgPath, 'noevent.png'), filename)
 
