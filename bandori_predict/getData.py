@@ -5,7 +5,7 @@ import requests
 #import csv
 import pandas as pd
 
-def get(filepath,eventNumber,rankType,regionType=3,showComplete=True):
+def get(filepath,eventNumber,rankType,regionType=6,showComplete=True):
     '''this Defines the Data which need to return to alive
     :filepath: *str ~ the specific path you want to insert file into
     :eventNumber: *int ~ a number which event you want to get
@@ -15,7 +15,7 @@ def get(filepath,eventNumber,rankType,regionType=3,showComplete=True):
     this can also trigs a output of isDownloadComplete, if not set 4th parameter to *False
     '''
     hd={'User_Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1'}
-    Rtype=['100','1000','2000'] #ranktype 0 1 2   #if other ranktype is needed,you can add 
+    Rtype=['50','100','300','500','1000','2000'] #ranktype 0 1 2   #if other ranktype is needed,you can add 
 
     url1= "https://bestdori.com/api/events/"+str(eventNumber)+".json"  #Get start/end time 
     eventData=requests.get(url1,headers=hd).text

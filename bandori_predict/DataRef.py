@@ -59,7 +59,7 @@ def GetDataStorage(dirs,AreaCode=3,PredNow=True,enum=0,RankType=-1):
         ~ Attention which this is the RANKTYPE will get all parameter which (0-2)
     '''
     
-    if RankType in range(0,3):
+    if RankType in range(0,6):
         try:
             __Main__RunPred(dirs,enum,RankType,AreaCode,3,1)
             #this is a predict-ivity reference, Which is Encoded in this frame of function.
@@ -67,7 +67,7 @@ def GetDataStorage(dirs,AreaCode=3,PredNow=True,enum=0,RankType=-1):
             print("ON Main Func,",enum,"->",RankType,"'s Pred is Fail",format_exc())
         
     else:
-        for RankType in range(0,3):
+        for RankType in range(0,6):
             try:
                 __Main__RunPred(dirs,enum,RankType,AreaCode,3,1)
                 #this is a predict-ivity reference, Which is Encoded in this frame of function.
