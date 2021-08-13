@@ -22,7 +22,7 @@ for areacode in range(0,5):
         os.mkdir(os.path.join(basePath, str(areacode)))
 
 sv_help = '''
-[<邦邦档线/预测线/ycx>100/1k/2k] 邦邦当期活动档线预测，数据来自besdori
+[<邦邦档线/预测线/ycx>50/100/300/500/1k/2k] 邦邦当期活动档线预测，数据来自besdori
 '''.strip()
 
 sv = Service('bangdream-predict', help_=sv_help)
@@ -36,16 +36,23 @@ async def bang_predict(bot, ev):
     key = ev.message.extract_plain_text().strip()
     ranktype=-1
     if not key:
-        await bot.send(ev, "未指定档线，全部预测中……")
+        msg = "未指定档线，将发送全部档线预测……"
+        await bot.send(ev, f"{msg}")
     else:
-        if key in ['100','百线','100线']:
+        if key in ['50','五十线','50线']:
             ranktype=0
-        elif key in ['1000','千线','1k']:
+        elif key in ['100','百线','100线']:
             ranktype=1
-        elif key in ['2000','两千线','2k']:
+        elif key in ['300','三百线','300线']:
             ranktype=2
+        elif key in ['500','五百线','500线']:
+            ranktype=3
+        elif key in ['1000','千线','1k']:
+            ranktype=4
+        elif key in ['2000','两千线','2k']:
+            ranktype=5
         else:
-            await bot.send(ev, "档线输入错误，请重新输入……")
+            await bot.send(ev, "档线输入错误，请输入50/100/300/500/1k/2k")
             return
 
     try:
@@ -82,14 +89,23 @@ async def bang_predict(bot, ev):
         await bot.finish(ev, f"生成失败……{format_exc()}")
 
     #print('操作完成时间',datetime.datetime.fromtimestamp(time.time()).strftime("%m/%d %H:%M:%S"))
-    if ranktype in range(0,3):
+    if ranktype in range(0,6):
         if ranktype==0:
-            await bot.send(ev, R.img('bangdreampic/predict/e100.png').cqcode)
+            await bot.send(ev, R.img('bangdreampic/predict/e50.png').cqcode)
         elif ranktype==1:
-            await bot.send(ev, R.img('bangdreampic/predict/e1k.png').cqcode)
+            await bot.send(ev, R.img('bangdreampic/predict/e100.png').cqcode)
         elif ranktype==2:
+            await bot.send(ev, R.img('bangdreampic/predict/e300.png').cqcode)
+        elif ranktype==3:
+            await bot.send(ev, R.img('bangdreampic/predict/e500.png').cqcode)
+        elif ranktype==4:
+            await bot.send(ev, R.img('bangdreampic/predict/e1k.png').cqcode)
+        elif ranktype==5:
             await bot.send(ev, R.img('bangdreampic/predict/e2k.png').cqcode)
     else:
+        await bot.send(ev, R.img('bangdreampic/predict/e50.png').cqcode)
         await bot.send(ev, R.img('bangdreampic/predict/e100.png').cqcode)
+        await bot.send(ev, R.img('bangdreampic/predict/e300.png').cqcode)
+        await bot.send(ev, R.img('bangdreampic/predict/e500.png').cqcode)
         await bot.send(ev, R.img('bangdreampic/predict/e1k.png').cqcode)
         await bot.send(ev, R.img('bangdreampic/predict/e2k.png').cqcode)
