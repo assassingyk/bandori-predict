@@ -1,4 +1,5 @@
 # bandori-predict
+
 适用hoshino的邦邦档线预测插件
 
 本体档线预测部分代码来自[Rinko-Predict-Python](https://github.com/Electronicute/Rinko-Predict-Python)，活动与档线数据来自besdori
@@ -9,12 +10,23 @@
 
 ## 安装方法
 
-1. 将bandori_predict文件夹放到...HoshinoBot/hoshino/modules目录下
-2. 将resources文件夹放到...HoshinoBot/res/img/bangdreampic/predict/resources目录下
+1. 将bandori_predict文件夹放到`HoshinoBot/hoshino/modules`目录下
+
+2. 将resources文件夹放到`HoshinoBot/res/img/bangdreampic/predict/resources`目录下
+
 3. 安装resources文件夹内的两个字体文件
-4. 安装依赖：`pip install -r requirements.txt`
+
+4. 安装依赖
+
+   `pip install -r requirements.txt`
+
 5. 在...HoshinoBot/hoshino/config/bot.py中添加bandori_predict模块
+
 6. 重启Hoshino
+
+   `cd HoshinoBot`
+
+   `python run.py`
 
 ## 指令列表
 
