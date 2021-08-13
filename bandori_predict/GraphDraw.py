@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import json
 import datetime,time
-import requests,urllib
+import requests
 import PIL.Image as Image
 import PIL.ImageFont as ImageFont
 import PIL.ImageDraw as ImageDraw
