@@ -3,15 +3,17 @@ import os
 import matplotlib.pyplot as plt
 import json
 import datetime,time
-import requests
+import requests,urllib
 import PIL.Image as Image
 import PIL.ImageFont as ImageFont
 import PIL.ImageDraw as ImageDraw
 import shutil
 from traceback import format_exc
 
-from hoshino.modules.bandori_predict.__init__ import imgbasePath
-imgPath=os.path.join(imgbasePath,'resources')
+from hoshino.config import RES_DIR
+
+imgbasePath=os.path.join(os.path.expanduser(RES_DIR), 'img','bangdreampic','predict')
+imgPath=os.path.join(os.path.expanduser(RES_DIR), 'img','bangdreampic','predict','resources')
 
 def main(eventNumber,rankType,areacode,basePath,JsonPath):
     
@@ -182,8 +184,8 @@ def main(eventNumber,rankType,areacode,basePath,JsonPath):
 
 
     def picDraw(pctList,ptList,slpList,ufinList,finList,bfinList,eventName,eventStart,eventEnd,rankType,able,basePath):
-        rankList=['[TOP  100]','[TOP 1000]','[TOP 2000]']
-        flist=['e100.png','e1k.png','e2k.png']
+        rankList=['[TOP  50]','[TOP  100]','[TOP  300]','[TOP  500]','[TOP 1000]','[TOP 2000]']
+        flist=['e50.png','e100.png','e300.png','e500.png','e1k.png','e2k.png']
         progress=int(((time.time()-eventStart)/(eventEnd-eventStart)*100))
         if progress>100:
             progress=100
@@ -276,7 +278,7 @@ def main(eventNumber,rankType,areacode,basePath,JsonPath):
        
         
 def nopicHandle(imgbasePath):
-    for filename0 in ['e100.png','e1k.png','e2k.png']:
+    for filename0 in ['e10.png','e50.png','e100.png','e300.png','e500.png','e1k.png','e2k.png']:
         filename=os.path.join(imgbasePath, filename0)
         shutil.copyfile(os.path.join(imgPath, 'noevent.png'), filename)
 
@@ -289,14 +291,14 @@ def GetDataPic(areacode,basePath,JsonPath,PredNow=True,Benum=0,RankType=-1):
         if this enable you MUST enter next few value
         :Benum is the event number that you want to check.
     '''
-    if RankType in range(0,3):
+    if RankType in range(0,6):
         
         main(Benum,RankType,areacode,basePath,JsonPath)
 
         #else:
             #nopicHandle(basePath)
     else:
-        for typ in range(0,3):
+        for typ in range(0,6):
                 main(Benum,typ,areacode,basePath,JsonPath)
    
 
