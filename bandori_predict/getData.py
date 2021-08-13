@@ -5,7 +5,7 @@ import requests
 #import csv
 import pandas as pd
 
-def get(filepath,eventNumber,rankType,regionType=6,showComplete=True):
+def get(filepath,eventNumber,rankType,regionType=3,showComplete=True):
     '''this Defines the Data which need to return to alive
     :filepath: *str ~ the specific path you want to insert file into
     :eventNumber: *int ~ a number which event you want to get
