@@ -12,7 +12,7 @@
 
 1. 将bandori_predict文件夹放到`HoshinoBot/hoshino/modules`目录下
 
-2. 将resources文件夹放到`HoshinoBot/res/img/bangdreampic/predict/resources`目录下
+2. 将resources文件夹放到`HoshinoBot/res/img/bangdreampic/predict`目录下
 
 3. 安装resources文件夹内的两个字体文件
 
@@ -20,7 +20,7 @@
 
    `pip install -r requirements.txt`
 
-5. 在...HoshinoBot/hoshino/config/bot.py中添加bandori_predict模块
+5. 在`HoshinoBot/hoshino/config/__bot__.py`中添加bandori_predict模块
 
 6. 重启Hoshino
 
