@@ -10,7 +10,7 @@ import PIL.ImageDraw as ImageDraw
 import shutil
 from traceback import format_exc
 
-from hoshino.modules.bandori_predict.__init__ import imgbasePath
+from hoshino.modules.bandori_predict.config import imgbasePath
 imgPath=os.path.join(imgbasePath,'resources')
 
 def main(eventNumber,rankType,areacode,basePath,JsonPath):

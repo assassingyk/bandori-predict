@@ -7,19 +7,17 @@ from traceback import format_exc
 
 from hoshino import Service, R
 from hoshino.typing import *
-from hoshino.config import RES_DIR
 
-imgbasePath=os.path.join(os.path.expanduser(RES_DIR), 'img','bangdreampic','predict')
-basePath= os.path.join(os.path.abspath(os.path.realpath(os.path.dirname(__file__))), 'data')
+from hoshino.modules.bandori_predict.config import imgbasePath,basePath,areacode
 
 #make sure of Dir is create
 if not os.path.exists(imgbasePath):
     os.mkdir(imgbasePath)
 if not os.path.exists(basePath):
     os.mkdir(basePath)
-for areacode in range(0,5):
-    if not os.path.exists(os.path.join(basePath,str(areacode))):
-        os.mkdir(os.path.join(basePath, str(areacode)))
+for area in range(0,5):
+    if not os.path.exists(os.path.join(basePath,str(area))):
+        os.mkdir(os.path.join(basePath, str(area)))
 
 sv_help = '''
 [<邦邦档线/预测线/ycx>50/100/300/500/1k/2k] 邦邦当期活动档线预测，数据来自besdori
@@ -27,11 +25,7 @@ sv_help = '''
 
 sv = Service('bangdream-predict', help_=sv_help)
 
-areacode=3
-TogglePara = True
-Bnum=0 
-
-@sv.on_prefix('邦邦档线', '预测线', 'ycx')
+@sv.on_prefix(('邦邦档线', '预测线', 'ycx'))
 async def bang_predict(bot, ev):
     key = ev.message.extract_plain_text().strip()
     ranktype=-1
@@ -63,14 +57,16 @@ async def bang_predict(bot, ev):
         Dict=requests.get(url,headers=hd, timeout=5).json()
 
         now=int(time.time())*1000
-        print(now)
+        #print(now)
         enum=0
+        #print(areacode)
         for event in Dict:
             if Dict[event]['startAt'][areacode] is None:
                 continue
             start=int(Dict[event]['startAt'][areacode])
             end=int(Dict[event]['endAt'][areacode])
             if end>now and start<now:
+                #print(Dict[event])
                 enum=int(event)
                 await bot.send(ev, f"当前活动：{int(event)}期，{Dict[event]['eventName'][areacode]}")
                 break
