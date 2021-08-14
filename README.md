@@ -8,19 +8,21 @@
 
 因为用的人不多所以没太仔细改，功能比较粗糙，底图什么的也没换）
 
-感谢[CYDXDianXian](https://github.com/CYDXDianXian)大佬帮助完善
+感谢[@CYDXDianXian](https://github.com/CYDXDianXian)大佬帮助完善
 
 ## 安装方法
 
 1. 将bandori_predict文件夹放到`HoshinoBot/hoshino/modules`目录下
 
-2. 将resources文件夹放到imgbasePath目录下，默认位置`HoshinoBot/res/img/bangdreampic/predict`，可自行在init.py修改
+2. 将resources文件夹放到imgbasePath目录下，默认位置`HoshinoBot/res/img/bangdreampic/predict`，可自行在config.py修改
 
 3. 安装依赖   `pip install -r requirements.txt`
 
 4. 在`HoshinoBot/hoshino/config/__bot__.py`中添加bandori_predict模块
 
 5. 重启Hoshino
+
+*默认查询国服档线，切换默认区服请修改config.py中areacode配置
 
 
 ## 指令列表
