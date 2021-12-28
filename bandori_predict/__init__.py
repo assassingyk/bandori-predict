@@ -21,6 +21,7 @@ for area in range(0,5):
 
 sv_help = '''
 [<邦邦档线/预测线/ycx>50/100/300/500/1k/2k] 邦邦当期活动档线预测，数据来自besdori
+[<邦邦档线/预测线/ycx><国服/日服/台服/韩服/国际服>50/100/300/500/1k/2k] 指定预测服务器
 '''.strip()
 
 sv = Service('bangdream-predict', help_=sv_help)
