@@ -21,13 +21,25 @@ for area in range(0,5):
 
 sv_help = '''
 [<邦邦档线/预测线/ycx>50/100/300/500/1k/2k] 邦邦当期活动档线预测，数据来自besdori
+[<邦邦档线/预测线/ycx><国服/日服/台服/韩服/国际服>50/100/300/500/1k/2k] 指定预测服务器
 '''.strip()
 
 sv = Service('bangdream-predict', help_=sv_help)
 
-@sv.on_prefix(('邦邦档线', '预测线', 'ycx'))
+def load_areacode(string=None):
+    code_dict = {"日服":0, "国际服":1, "台服":2, "国服":3, "韩服":4}
+    if string and string in code_dict.keys():
+        return code_dict[string]
+    else:
+        return areacode
+
+#@sv.on_prefix(('邦邦档线', '预测线', 'ycx'))
+@sv.on_rex(r'^(邦邦档线|邦邦预测|ycx|预测线)( )?(国服|日服|韩服|台服|国际服)?(.+)?')
 async def bang_predict(bot, ev):
-    key = ev.message.extract_plain_text().strip()
+    #key = ev.message.extract_plain_text().strip()
+    match = ev["match"]
+    key = match.group(4).strip()
+    areacode = load_areacode(match.group(3).strip())
     ranktype=-1
     if not key:
         msg = "未指定档线，默认预测1k线……"
