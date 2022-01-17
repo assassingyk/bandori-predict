@@ -28,7 +28,7 @@ sv = Service('bangdream-predict', help_=sv_help)
 
 def load_areacode(string=None):
     code_dict = {"日服":0, "国际服":1, "台服":2, "国服":3, "韩服":4}
-    if string and string in code_dict.keys():
+    if string and string.strip() in code_dict.keys():
         return code_dict[string]
     else:
         return areacode
@@ -39,7 +39,7 @@ async def bang_predict(bot, ev):
     #key = ev.message.extract_plain_text().strip()
     match = ev["match"]
     key = match.group(4).strip()
-    areacode = load_areacode(match.group(3).strip())
+    areacode = load_areacode(match.group(3))
     ranktype=-1
     if not key:
         msg = "未指定档线，默认预测1k线……"
