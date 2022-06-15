@@ -76,14 +76,9 @@ def main(eventNumber,rankType,areacode,basePath,JsonPath):
         d.text((titlex,100),title,font=fnt, fill=(0,0,0,255))
         d.text((450,500),'制图时间：'+timestamp_full(time.time()),font=fnt2, fill=(0,0,0,255))
         out=Image.alpha_composite(im,txt)
-        flist=['e100.png','e1k.png','e2k.png']
-        if rankType==4:
-            for filename0 in flist:
-                filename=os.path.join(basePath,filename0)
-                out.save(filename)
-        else:
-            filename=basePath+flist[rankType]
-            out.save(filename)
+        flist=['e50.png','e100.png','e300.png','e500.png','e1k.png','e2k.png']
+        filename=basePath+flist[rankType]
+        out.save(filename)
 
     def dataTrans(eventNumber,AreaCode,enum,etp):
         jsondir=os.path.join(JsonPath, str(AreaCode), f"e{str(enum)}", f"t{str(etp)}", "event.json")
