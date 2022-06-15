@@ -78,7 +78,7 @@ def main(eventNumber,rankType,areacode,basePath,JsonPath):
         out=Image.alpha_composite(im,txt)
         flist=['e50.png','e100.png','e300.png','e500.png','e1k.png','e2k.png']
         if rankType in range(0,6):
-            filename=basePath+flist[rankType]
+            filename=os.path.join(basePath, flist[rankType])
             out.save(filename)
         else:
             for filename0 in flist:
